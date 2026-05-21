@@ -89,12 +89,20 @@ def save(data):
 
 def main():
     request = promt_init()
+    if not request:
+        print('Работа модуля прервана!')
+        return
+
     result = make_request(promt=request)
+    if not result:
+        print(f'Не удалось получить ответ от модели')
+        print('Работа модуля прервана!')
+        return
+
     check_params(data=result)
 
-    if result:
-        save(data=result)
-        print("JSON успешно сохранен")
+    save(data=result)
+    print("JSON успешно сохранен")
 
     print('РАБОТА МОДУЛЯ ИЗВЛЕЧЕНИЯ ПАРАМЕТРОВ ЗАВЕРШЕНА!')
 
