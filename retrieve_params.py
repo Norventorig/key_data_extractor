@@ -89,7 +89,7 @@ def save(data):
 
 def main():
     request = promt_init()
-    result = make_request(prompt=request)
+    result = make_request(promt=request)
     check_params(data=result)
 
     if result:
