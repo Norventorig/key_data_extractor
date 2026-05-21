@@ -26,7 +26,7 @@ def promt_init():
         with open('data_to_extract.txt', 'r', encoding="utf-8") as f:
             data_to_extract = f.read()
     except FileNotFoundError:
-        print('Файл с параметрами для извлечения отсутствует!')
+        print('Файл с параметрами для извлечения (data_to_extract.txt) отсутствует!')
         return ""
 
     return (f"Роль: Ты опытный Документовед. "
