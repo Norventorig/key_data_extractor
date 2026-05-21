@@ -2,7 +2,7 @@ from docx import Document
 import os
 
 
-def extract_text_from_docx(path: str=None) -> str | None:
+def main(path: str=None) -> str | None:
     """Extract the plaintext from a .docx file.
     Parameters:
          path (str): The string representing location of your document.
@@ -43,4 +43,4 @@ if __name__ == "__main__":
     input_path = input("Введите путь к .docx файлу: ")
 
     print(F'Содержание файла {input_path}: \n\n')
-    print(extract_text_from_docx(path=input_path))
+    print(main(path=input_path))
