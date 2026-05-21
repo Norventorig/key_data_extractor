@@ -87,7 +87,7 @@ def save(data):
         json.dump(data, f, ensure_ascii=False, indent=4)
 
 
-def retrieve_params():
+def main():
     request = promt_init()
     result = make_request(prompt=request)
     check_params(data=result)
@@ -100,4 +100,4 @@ def retrieve_params():
 
 
 if __name__ == '__main__':
-    retrieve_params()
+    main()
