@@ -2,9 +2,6 @@ from openai import OpenAI
 import os
 import json
 from pydantic import BaseModel
-
-from retrieve_text import main as extract_text
-
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,16 +16,7 @@ class Report(BaseModel):
     pass
 
 
-def promt_init():
-    document = extract_text(path=input('Введите путь документа: '))
-
-    try:
-        with open('data_to_extract.txt', 'r', encoding="utf-8") as f:
-            data_to_extract = f.read()
-    except FileNotFoundError:
-        print('Файл с параметрами для извлечения (data_to_extract.txt) отсутствует!')
-        return ""
-
+def promt_init(document: str, data_to_extract: str):
     return (f"Роль: Ты опытный Документовед. "
             f"Контекст: Мы читаем документы по горнодобывающим работам. "
             f"Задача: Извлеки данные: {data_to_extract}. "
@@ -87,8 +75,8 @@ def save(data):
         json.dump(data, f, ensure_ascii=False, indent=4)
 
 
-def main():
-    request = promt_init()
+def main(document: str, data_to_extract: str):
+    request = promt_init(document=document, data_to_extract=data_to_extract)
     if not request:
         print('Работа модуля прервана!')
         return
@@ -108,4 +96,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    doc_path = input("Введите текст докумета для анализа:\n")
+    doc_params = input("Введите параметры документа через запятую:\n")
+
+    print(main(document=doc_path, data_to_extract=doc_params))
