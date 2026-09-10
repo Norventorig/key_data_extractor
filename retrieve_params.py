@@ -52,7 +52,7 @@ def parse_llm_json(function):
 @parse_llm_json
 def make_request(promt):
     response = client.chat.completions.create(
-        model="baidu/cobuddy:free",
+        model="nvidia/nemotron-3.5-lightning:free",
         response_format={"type": "json_object"},
         messages=[{"role": "user",
                    "content": promt}],
