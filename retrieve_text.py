@@ -1,7 +1,7 @@
 from openai import OpenAI
 import os
 import base64
-import fitz
+import pymupdf
 from docx import Document
 from dotenv import load_dotenv
 
